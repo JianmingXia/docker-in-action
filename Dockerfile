@@ -2,9 +2,13 @@ FROM centos:7
 
 RUN \
   yum -y update \
+  # && yum -y install google-chrome-stable fonts-wqy-zenhei
   && yum -y install wget \
   && wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm \
   && yum -y install ./google-chrome-stable_current_*.rpm
+
+RUN \
+  yum -y install wqy-zenhei-fonts
 
 # FROM node:14.4.0
 COPY --from=node:14.4.0 /usr/local/include/node /usr/local/include/node
